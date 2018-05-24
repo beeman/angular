@@ -571,7 +571,7 @@ export interface Component extends Directive {
   /**
    * Specifies inline stylesheets for an Angular component.
    */
-  styles?: string[];
+  styles?: string[] | string;
 
   /**
    * Animations are defined on components via an animation-like DSL. This DSL approach to describing
