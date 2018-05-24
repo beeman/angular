@@ -68,9 +68,12 @@ export class InlineResourcesMetadataTransformer implements MetadataTransformer {
       delete arg.templateUrl;
     }
 
+    if (typeof arg['styles'] === 'string') {
+      arg['styles'] = [arg['styles']]
+    }
     const styles = arg['styles'] || [];
     const styleUrls = arg['styleUrls'] || [];
-    if (!Array.isArray(styles)) throw new Error('styles should be an array');
+    if (!Array.isArray(styles)) throw new Error('styles should be an array or string');
     if (!Array.isArray(styleUrls)) throw new Error('styleUrls should be an array');
 
     styles.push(...styleUrls.map(styleUrl => loader.get(styleUrl)));
